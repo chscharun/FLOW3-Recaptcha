@@ -31,24 +31,26 @@ Usage of the view helper
 
 Just add namespace for the view helper and use it in your template without any parameter as shown in the example below:
 
-  {namespace ir=Incloud\Recaptcha\ViewHelpers\Widget}
+```
+{namespace ir=Incloud\Recaptcha\ViewHelpers\Widget}
 
-  <!DOCTYPE html>
-  <html>
-    <head>
-      <meta charset="utf-8">
-      <title>Index view of Recaptcha Demo</title> 
-      <f:base />
-    </head>
-    <body>
-      <h1>Recaptcha Demo</h1>
-      <f:flashMessages class="flashmessages" />
-      <f:form action="validate" controller="Standard" method="post" name="validationform">
-        <ir:recaptcha />
-        <f:form.submit value="Validate" />
-      </f:form>
-    </body>
-  </html>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Index view of Recaptcha Demo</title> 
+    <f:base />
+  </head>
+  <body>
+    <h1>Recaptcha Demo</h1>
+    <f:flashMessages class="flashmessages" />
+    <f:form action="validate" controller="Standard" method="post" name="validationform">
+      <ir:recaptcha />
+      <f:form.submit value="Validate" />
+    </f:form>
+  </body>
+</html>
+```
 
 Usage of the validator
 ----------------------
@@ -57,41 +59,43 @@ In your Action Controller simply inject the validator model.
 Now you can use the validate function.
 Parameters are the recaptcha_challenge_field and the recaptcha_response_field delivered by the form.
 
-  class StandardController extends \TYPO3\FLOW3\MVC\Controller\ActionController {
+```
+class StandardController extends \TYPO3\FLOW3\MVC\Controller\ActionController {
 
-    /**
-     * @FLOW3\Inject
-     * @var Incloud\Recaptcha\Domain\Model\Recaptcha
-     */
-    protected $recaptcha;
+  /**
+   * @FLOW3\Inject
+   * @var Incloud\Recaptcha\Domain\Model\Recaptcha
+   */
+  protected $recaptcha;
 
-    /**
-     * Index action
-     *
-     * @return void
-     */
-    public function indexAction() {
-      //only shows form
-    }
-
-    /**
-     * Validate action
-     *
-     * @return void
-     */
-    public function validateAction() {
-      $arguments = $this->request->getArguments();
-      $resp = $this->recaptcha->validate($arguments["recaptcha_challenge_field"], $arguments["recaptcha_response_field"]);
-      
-      if($resp !== true)
-        $this->addFlashMessage($resp);
-      else
-        $this->addFlashMessage("Validation successful!");
-
-      $this->redirect("index");
-    }
-
+  /**
+   * Index action
+   *
+   * @return void
+   */
+  public function indexAction() {
+    //only shows form
   }
+
+  /**
+   * Validate action
+   *
+   * @return void
+   */
+  public function validateAction() {
+    $arguments = $this->request->getArguments();
+    $resp = $this->recaptcha->validate($arguments["recaptcha_challenge_field"], $arguments["recaptcha_response_field"]);
+    
+    if($resp !== true)
+      $this->addFlashMessage($resp);
+    else
+      $this->addFlashMessage("Validation successful!");
+
+    $this->redirect("index");
+  }
+
+}
+```
 
 Remember functionality
 ----------------------
