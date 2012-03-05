@@ -1,0 +1,6 @@
+Incloud:
+  Recaptcha:
+    security:
+      publicKey: ' '
+      privateKey: ' '
+      validTime: 900
