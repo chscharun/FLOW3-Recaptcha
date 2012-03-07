@@ -1,10 +1,8 @@
-Recaptcha -- FLOW3 v0.9
+Recaptcha -- FLOW3
 ==============================================
--- Integration of google's recaptcha --
+-- Integration of google's reCAPTCHA --
 
 (c) Christopher Doerge, Incloud GmbH  
-  
-The module is not finally tested.
 
 Installation
 ------------

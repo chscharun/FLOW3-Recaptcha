@@ -64,7 +64,7 @@ class Recaptcha {
 			return "Please type in the confirmation code!";
 
 		// Check via recaptcha lib
-		require_once(FLOW3_PATH_FLOW3 . '../Incloud.Recaptcha/Resources/PHP/recaptchalib.php');
+		require_once("resource://Incloud.Recaptcha/PHP/recaptchalib.php");
 		
 		$resp = Ext\recaptcha_check_answer($this->settings["security"]["privateKey"], $this->environment->getRemoteAddress(), $challenge, $response);
 		

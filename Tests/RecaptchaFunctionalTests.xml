@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<phpunit strict="true" 
+				bootstrap="RecaptchaTestBootstrap.php"
+				convertErrorsToExceptions="true"
+				convertNoticesToExceptions="true"
+				convertWarningsToExceptions="true">
+	<testsuites>
+		<testsuite name="Recaptcha Functional Tests">
+			<directory>Functional</directory>
+		</testsuite>
+	</testsuites>
+</phpunit>
