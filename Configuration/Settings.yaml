@@ -3,4 +3,5 @@ Incloud:
     security:
       publicKey: ' '
       privateKey: ' '
+    memory:
       validTime: 900
