@@ -14,9 +14,9 @@ cd ../../
 ./flow3 package:activate Incloud.Recaptcha
 ```
 
-After this go to [http://www.google.com/recaptcha](http://www.google.com/recaptcha) and create some keys for your website
+After this go to [http://www.google.com/recaptcha](http://www.google.com/recaptcha) and create some keys for your website.
 
-Add them in Settings.yaml:
+Add them in settings.yaml:
 
 ```
 Incloud:
@@ -29,7 +29,7 @@ Incloud:
 Usage of the view helper
 ------------------------
 
-Just add namespace for the view helper and use it in your template without any parameter as shown in the example below:
+Just add a namespace for the view helper and use it in your template without any parameter as shown in the example below:
 
 ```
 {namespace ir=Incloud\Recaptcha\ViewHelpers\Widget}
@@ -100,8 +100,8 @@ class StandardController extends \TYPO3\FLOW3\MVC\Controller\ActionController {
 Remember functionality
 ----------------------
 
-You can can let the recaptcha module add the successfuly solution of the captcha to the session by setting the third parameter of validate function to true.  
-Your Application will now remember for specified period of time you can also set in the settings.yaml. The default time for this period is 900 seconds.
+You can can let the recaptcha module add the successful solution of the captcha to the session by setting the third parameter of validate function to true.  
+Your application will now remember for a specified period of time you can also set in the settings.yaml. The default time for this period is 900 seconds.
 
 ```
 Incloud:
