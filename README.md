@@ -34,7 +34,7 @@ Usage of the view helper
 Just add namespace for the view helper and use it in your template without any parameter as shown in the example below:
 
 ```
-{namespace ir=TYPO3\Recaptcha\ViewHelpers\Widget}
+{namespace tr=TYPO3\Recaptcha\ViewHelpers\Widget}
 
 <!DOCTYPE html>
 <html>
@@ -47,7 +47,7 @@ Just add namespace for the view helper and use it in your template without any p
     <h1>Recaptcha Demo</h1>
     <f:flashMessages class="flashmessages" />
     <f:form action="validate" controller="Standard" method="post" name="validationform">
-      <ir:recaptcha />
+      <tr:recaptcha />
       <f:form.submit value="Validate" />
     </f:form>
   </body>
