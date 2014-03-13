@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<package>
-	<key>Incloud.Recaptcha</key>
-	<title>Package to include Googles Recaptcha as View Helper</title>
-	<description>This package provides a Recaptcha View Helper for the FLOW3 distribution
-	to make forms more secure</description>
-	<version>0.9</version>
-</package>

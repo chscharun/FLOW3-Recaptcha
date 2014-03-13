@@ -1,4 +1,4 @@
-Incloud:
+TYPO3:
   Recaptcha:
     security:
       publicKey: ' '
