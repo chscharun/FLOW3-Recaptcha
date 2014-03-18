@@ -18,7 +18,7 @@ class Recaptcha {
 
 	/**
 	 * @Flow\Inject
-	 * @var TYPO3\Flow\Utility\Environment
+	 * @var \TYPO3\Flow\Utility\Environment
 	 */
 	protected $environment;
 
