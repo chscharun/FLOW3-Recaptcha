@@ -3,9 +3,8 @@
 		<div>You have already solved the captcha.</div>
 	</f:then>
 	<f:else>
-		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-		<script type="text/javascript" src="{f:uri.resource(path: 'recaptcha-init.js')}"></script>
-		<link href="{f:uri.resource(path: 'recaptcha.css')}" rel="stylesheet" />
+		<script type="text/javascript" src="{f:uri.resource(path: 'resource://TYPO3.Recaptcha/Public/recaptcha-init.js')}"></script>
+		<link href="{f:uri.resource(path: 'resource://TYPO3.Recaptcha/Public/recaptcha.css')}" rel="stylesheet" />
 
 		<div id="recaptcha_widget" style="display:none">
 			<div id="recaptcha_image"></div>
@@ -24,14 +23,15 @@
 			<div id="recaptcha_explanation" style="display: none">
 				Computers can not see the words inside the picture. By entering, we can rule out misuse of this form by automated filling.
 			</div>
-
-			<input type="text" id="recaptcha_response_field" name="recaptcha_response_field" />
+			<div class="form-group col-lg-12">
+				<f:form.textfield class="form-control" name="{fieldNamePrefix}[captchaResponse]" id="recaptcha_response_field" />
+			</div>
 		</div>
-		<script src="http://www.google.com/recaptcha/api/challenge?k={publickey}"></script>
+		<script src="http://www.google.com/recaptcha/api/challenge?k={publicKey}"></script>
 		<noscript>
-			<iframe src="http://www.google.com/recaptcha/api/noscript?k={publickey}" height="300" width="400" frameborder="0"></iframe>
-			<textarea name="recaptcha_challenge_field" rows="3" cols="40"></textarea>
-			<input type="hidden" name="recaptcha_response_field" id="recaptcha_response_field" value="manual_challenge" />
+			<iframe src="http://www.google.com/recaptcha/api/noscript?k={publicKey}" height="300" width="400" frameborder="0"></iframe>
+			<f:form.textarea name="recaptcha_challenge_field" rows="3" cols="40"></f:form.textarea>
+			<f:form.hidden name="{fieldNamePrefix}[captchaResponse]" id="recaptcha_response_field" value="manual_challenge" />
 		</noscript>
 		<script type="text/javascript">
 			$(function()
