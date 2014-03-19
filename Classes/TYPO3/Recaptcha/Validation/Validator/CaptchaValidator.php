@@ -15,6 +15,16 @@ use TYPO3\Recaptcha\Domain\Model\Recaptcha;
 class CaptchaValidator extends AbstractValidator {
 
 	/**
+	 * This validator always needs to be executed even if the given value is empty.
+	 * See AbstractValidator::validate()
+	 *
+	 * @var boolean
+	 */
+	protected $acceptsEmptyValues = FALSE;
+
+
+
+	/**
 	 * @Flow\Inject
 	 * @var Recaptcha
 	 */
@@ -31,7 +41,6 @@ class CaptchaValidator extends AbstractValidator {
 	protected function isValid($value) {
 		$captchaChallenge = $_POST['recaptcha_challenge_field'];
 		$validationResult = $this->recaptcha->validate($captchaChallenge, $value);
-
 		if (!$validationResult === TRUE) {
 			$this->addError($validationResult, 1395205826);
 		}
