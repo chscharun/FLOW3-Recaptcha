@@ -5,7 +5,12 @@ use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Fluid\ViewHelpers\Form\AbstractFormFieldViewHelper;
 
 /**
- * @Flow\Scope("prototype")
+ * = Basic usage =
+ *
+ * <code title="Example">
+ * <captcha:form.captcha publicKey="...your recaptcha public key..." />
+ * </code>
+ *
  * @api
  */
 class CaptchaViewHelper extends AbstractFormFieldViewHelper {
