@@ -39,9 +39,16 @@ class CaptchaValidator extends AbstractValidator {
 	 * @return void
 	 */
 	protected function isValid($value) {
+		// Check whether captcha is empty
+		if ($value === '' || $value === NULL) {
+			$this->addError('The captcha must not be empty!', 1395205827);
+			return;
+		}
+
+		// Check whether captcha response is what we expected
 		$captchaChallenge = $_POST['recaptcha_challenge_field'];
 		$validationResult = $this->recaptcha->validate($captchaChallenge, $value);
-		if (!$validationResult === TRUE) {
+		if (!($validationResult === TRUE)) {
 			$this->addError($validationResult, 1395205826);
 		}
 	}
