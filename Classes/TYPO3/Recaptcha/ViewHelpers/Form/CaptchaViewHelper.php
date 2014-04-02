@@ -8,6 +8,7 @@ use TYPO3\Fluid\ViewHelpers\Form\AbstractFormFieldViewHelper;
  * = Basic usage =
  *
  * <code title="Example">
+ * <!-- if the parameter publicKey is not given, it will be taken from the TYPO3.Recaptcha.security.publicKey settings -->
  * <captcha:form.captcha publicKey="...your recaptcha public key..." />
  * </code>
  *
@@ -25,13 +26,23 @@ class CaptchaViewHelper extends AbstractFormFieldViewHelper {
 
 
 	/**
+	 * We inject the public key from the settings
+	 *
+	 * @Flow\Inject(setting="security.publicKey", package="TYPO3.Recaptcha")
+	 * @var string
+	 */
+	protected $recaptchaPublicKey;
+
+
+
+	/**
 	 * Initialize arguments.
 	 *
 	 * @return void
 	 */
 	public function initializeArguments() {
 		$this->registerTagAttribute('template', 'string', 'Resource string for the template to be used for rendering the captcha view helper (optional)', FALSE);
-		$this->registerTagAttribute('publicKey', 'string', 'The public key for the Recaptcha account to be used for this captcha (required!)', TRUE);
+		$this->registerTagAttribute('publicKey', 'string', 'The public key for the Recaptcha account to be used for this captcha (required!)', FALSE);
 	}
 
 
@@ -43,12 +54,14 @@ class CaptchaViewHelper extends AbstractFormFieldViewHelper {
 		if ($this->arguments['template']) {
 			$this->templateResource = $this->arguments['template'];
 		}
-		$view = $this->objectManager->get('\TYPO3\Fluid\View\StandaloneView');
-		/* @var $view \TYPO3\Fluid\View\StandaloneView */
+		if ($this->arguments['publicKey']) {
+			$this->recaptchaPublicKey = $this->arguments['publicKey'];
+		}
+		$view = $this->objectManager->get('\TYPO3\Fluid\View\StandaloneView'); /* @var $view \TYPO3\Fluid\View\StandaloneView */
 
 		$view->setTemplatePathAndFilename($this->templateResource);
 		$view->assign('fieldNamePrefix', $this->viewHelperVariableContainer->get('TYPO3\Fluid\ViewHelpers\FormViewHelper', 'fieldNamePrefix'));
-		$view->assign('publicKey', $this->arguments['publicKey']);
+		$view->assign('publicKey', $this->recaptchaPublicKey);
 		return $view->render();
 	}
 
