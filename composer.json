@@ -1,0 +1,13 @@
+{
+    "name": "typo3/recaptcha",
+    "type": "typo3-flow-package",
+    "description": "Integration of google's reCAPTCHA",
+    "require": {
+        "typo3/flow": "*"
+    },
+    "autoload": {
+        "psr-0": {
+            "TYPO3\\Recaptcha": "Classes"
+        }
+    }
+}
